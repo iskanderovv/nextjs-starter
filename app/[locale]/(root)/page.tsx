@@ -1,7 +1,9 @@
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 export default function Home() {
+  const t = useTranslations('home')
   return (
-    <div>Welcome to the Home Page</div>
+    <div>{t('title')}</div>
   )
 }
