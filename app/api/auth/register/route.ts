@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { RegisterSchema } from "@/lib/validators/auth";
 import { dbConnect } from "@/lib/mongoose";
 import Admin from "@/models/admin.model";
 import bcrypt from "bcrypt";
+import { RegisterSchema } from "@/validations/auth.schema";
 
 export async function POST(req: Request) {
   try {

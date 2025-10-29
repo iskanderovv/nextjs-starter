@@ -16,7 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Next.js Starter",
-  description: "A starter template for Next.js projects with authentication and admin panel.",
+  description:
+    "A starter template for Next.js projects with authentication and admin panel.",
+  generator: "Akbar Iskandarov",
+  authors: [{ name: "Akbar Iskandarov", url: "https://iskanderov.dev" }],
+  keywords: ["Next.js", "Starter", "Template", "Authentication", "Admin Panel"],
 };
 
 export default async function RootLayout({
@@ -26,15 +30,16 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>) {
-  const locale = (await params).locale;
+  const { locale } = await params;
 
   const messages = getMessages();
+
   return (
     <html lang={locale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>
       </body>
